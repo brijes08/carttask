@@ -167,11 +167,11 @@
     }
 
     .card_details div:first-child {
-        width: 50%;
+        width: 100%;
     }
 
     .card_details div:nth-child(2) {
-        width: 22%;
+        width: 45%;
     }
 
     .card_details button {
