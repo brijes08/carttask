@@ -186,11 +186,8 @@ function updateOrder() {
 function updatePaymentButton() {
     const totalPayment = parseFloat(document.getElementById("totalPayment").textContent.replace('$', ''));
 
-    document.querySelectorAll(".accordion-radio").forEach(radio => {
-        const paymentButton = radio.closest("li").querySelector(".payment_btn");
-        if (paymentButton) {
-            paymentButton.textContent = `Pay $${totalPayment.toFixed(2)}`;
-        }
+    document.querySelectorAll(".payment_btn").forEach(paymentButton => {
+        paymentButton.textContent = `Pay $${totalPayment.toFixed(2)}`;
     });
 }
 

@@ -73,6 +73,7 @@
     .card_details button {
         width: 30%;
     }
+
     .card_details {
         flex-wrap: wrap;
     }
@@ -203,7 +204,19 @@
         margin-left: 0px;
         margin-top : 10px;
     }
+
     .card_details div {
         width: 84%;
+    }
+
+    a.accordian-toggle {
+        margin-left: 19px;
+    }
+
+    .accordian-toggle::before {
+        left: -18px;
+    }
+    .accordian-toggle.active::after {
+        left: -15px;
     }
 }

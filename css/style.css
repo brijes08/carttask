@@ -131,6 +131,8 @@ footer {
 a.accordian-toggle {
     text-decoration: none;
     color          : black;
+    margin-left: 26px;
+
 }
 
 .billing_details ul {
@@ -366,4 +368,28 @@ form.add_address_form .form_innerdiv>div {
 .form_innerdiv {
     display  : flex;
     flex-wrap: wrap;
+}
+.accordian-toggle{
+    position: relative;
+}
+.accordian-toggle::before{
+    position: absolute;
+    content: "";
+    width: 12px;
+    height: 12px;
+    border: 1px solid #0d6efd;
+    border-radius: 100%;
+    background-color: transparent;
+    left: -26px;
+    top: 6px;
+}
+.accordian-toggle.active::after{
+    position: absolute;
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background-color: #0d6efd;
+    left: -23px;
+    top: 9px;
 }
