@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSPAGY Task</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <section class="breadcrump_section">
+        <h2>Shipping Cart</h2>
+        <ul>
+            <li><a href="#.">Home</a>/</li>
+            <li><a href="#.">Clothing Categories</a>/</li>
+            <li><a href="#.">My Shopping Cart</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-12 col-12">
+                    <div class="customer_details">
+
+                        <div class="cstmr_dtl">
+                            <h3>Customer Details</h3>
+                            <div class="address_box billing-address">
+                                <div>
+                                    <h5>Billing Address</h5>
+                                    <p class="address-content">123 Main St, Springfield, IL, USA, 62701</p>
+                                </div>
+                                <div>
+                                    <a class="site_btn" data-bs-toggle="modal" href="#exampleModalToggle"
+                                        role="button">Change</a>
+                                </div>
+                            </div>
+                            <div class="address_box shipping-address">
+                                <div>
+                                    <h5>Shipping Address</h5>
+                                    <p class="address-content">456 Elm St, Springfield, IL, USA, 62702</p>
+                                </div>
+                                <div>
+                                    <a class="site_btn" data-bs-toggle="modal" href="#exampleModalToggle"
+                                        role="button">Change</a>
+                                </div>
+                            </div>
+                            <a class="addnewbtn" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">+ Add New
+                                Address</a>
+                        </div>
+                        <div class="billing_details">
+                            <h4>Payment Method</h4>
+                            <ul>
+                                <li>
+                                    <a href="#." id="accordian1" class="accordian-toggle active">
+                                        <input type="radio" name="accordion" class="accordion-radio" checked>
+                                        Debit/Credit Card
+                                    </a>
+                                    <div class="form">
+                                        <div class="card_num">
+                                            <label>Enter Card Number*</label>
+                                            <input type="text" id="cardNumber" minlength="16" maxlength="16" required>
+                                            <div class="error-message" id="cardNumberError"></div>
+                                        </div>
+                                        <div class="card_details">
+                                            <div>
+                                                <label>Valid Date*</label>
+                                                <select name="MM" id="month" required>
+                                                    <option value="MM" disabled selected>MM</option>
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
+                                                <select name="YYYY" id="year" required>
+                                                    <option value="YYYY" disabled selected>YYYY</option>
+                                                    <option value="2024">2024</option>
+                                                    <option value="2025">2025</option>
+                                                    <option value="2026">2026</option>
+                                                    <option value="2027">2027</option>
+                                                    <option value="2028">2028</option>
+                                                    <option value="2029">2029</option>
+                                                    <option value="2030">2030</option>
+                                                </select>
+                                                <div class="error-message" id="dateError"></div>
+                                            </div>
+                                            <div>
+                                                <label>CVV*</label>
+                                                <input type="text" id="cvv" minlength="3" maxlength="3" required>
+                                                <div class="error-message" id="cvvError"></div>
+                                            </div>
+                                            <button class="payment_btn" type="button" onclick="validateForm()">Pay
+                                                $120</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#." id="accordian2" class="accordian-toggle">
+                                        <input type="radio" name="accordion" class="accordion-radio">
+                                        Netbanking
+                                    </a>
+                                    <div class="form">
+                                        <div class="card_num">
+                                            <label>Enter Customer ID*</label>
+                                            <input type="text" id="Netbanking" required>
+                                            <div class="error-message" id="NetbankingError"></div>
+                                        </div>
+                                        <button class="payment_btn" type="button" onclick="validateCustomerID()">Pay $120</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#." id="accordian3" class="accordian-toggle">
+                                        <input type="radio" name="accordion" class="accordion-radio">
+                                        Google Pay/Wallet
+                                    </a>
+                                    <div class="form">
+                                        <div class="card_num">
+                                            <label>Enter UPI ID*</label>
+                                            <input type="text" id="UPIID" required>
+                                            <div class="error-message" id="UPIIDError"></div>
+                                        </div>
+                                        <button class="payment_btn" type="button" onclick="validateFormUPI()">Pay $120</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-12 col-12">
+                    <div class="your_order">
+                        <h3>Your Order</h3>
+                        <ul id="orderItems">
+                            <li class="products">
+                                <div class="img_div">
+                                    <img src="./images/61j2FBMg2LL._SX569_.jpg" alt="">
+                                </div>
+                                <div class="product_content">
+                                    <h6>Lorem Ipsum is simply dummy text industry.</h6>
+                                    <ul>
+                                        <li>Size: XL</li>
+                                        <li>Color: Blue</li>
+                                        <li class="product-price" data-price="64.00">$64.00</li>
+                                        <li>Qty: <select name="qty" class="product-quantity">
+                                                <option value="1">01</option>
+                                                <option value="2">02</option>
+                                                <option value="3">03</option>
+                                            </select>
+                                        </li>
+                                    </ul>
+                                    <span class="saved-amount">You have saved $1</span>
+                                    <a href="#." class="remove-item">Remove</a>
+                                </div>
+                            </li>
+                            <li class="products">
+                                <div class="img_div">
+                                    <img src="./images/61j2FBMg2LL._SX569_.jpg" alt="">
+                                </div>
+                                <div class="product_content">
+                                    <h6>Lorem Ipsum is simply dummy text industry.</h6>
+                                    <ul>
+                                        <li>Size: XL</li>
+                                        <li>Color: Blue</li>
+                                        <li class="product-price" data-price="64.00">$64.00</li>
+                                        <li>Qty: <select name="qty" class="product-quantity">
+                                                <option value="1">01</option>
+                                                <option value="2">02</option>
+                                                <option value="3">03</option>
+                                            </select>
+                                        </li>
+                                    </ul>
+                                    <span class="saved-amount">You have saved $1</span>
+                                    <a href="#." class="remove-item">Remove</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="other_charges">
+                            <ul>
+                                <li>Delivery Charges</li>
+                                <li><b id="deliveryCharge">$10</b> Express Delivery</li>
+                                <li>Coupon Discount</li>
+                                <li><b>$0</b> No coupon available</li>
+                            </ul>
+                        </div>
+                        <div class="total_payment">
+                            <ul>
+                                <!-- <li>Subtotal</li>
+                                <li><b id="subtotal">$128.00</b></li> -->
+                                <li>Total Payment</li>
+                                <li><b id="totalPayment">$138.00</b></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Address</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Address options will be dynamically added here -->
+                    </div>
+                    <button class="set-address-btn">Set Address</button>
+
+                    <form class="add_address_form">
+                        <div class="form_innerdiv">
+                            <div>
+                                <label>Flat/Condo/House Number</label>
+                                <input type="text" name="flatNumber" class="form-control">
+                            </div>
+                            <div>
+                                <label>Street Number/Name</label>
+                                <input type="text" name="streetName" class="form-control">
+                            </div>
+                            <div>
+                                <label>City</label>
+                                <input type="text" name="city" class="form-control">
+                            </div>
+                            <div>
+                                <label>Country</label>
+                                <input type="text" name="country" class="form-control">
+                            </div>
+                            <div>
+                                <label>Zip Code</label>
+                                <input type="text" name="zipCode" class="form-control">
+                            </div>
+                        </div>
+                        <button type="submit" class="site_btn">Add Address</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
