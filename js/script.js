@@ -267,14 +267,21 @@ $(document).ready(function () {
 
     renderAddresses();
 
+    // Validation and submission for adding a new address
     $('.add_address_form').on('submit', function (e) {
         e.preventDefault();
 
-        var flatNumber = $('input[name="flatNumber"]').val();
-        var streetName = $('input[name="streetName"]').val();
-        var city = $('input[name="city"]').val();
-        var country = $('input[name="country"]').val();
-        var zipCode = $('input[name="zipCode"]').val();
+        var flatNumber = $('input[name="flatNumber"]').val().trim();
+        var streetName = $('input[name="streetName"]').val().trim();
+        var city = $('input[name="city"]').val().trim();
+        var country = $('input[name="country"]').val().trim();
+        var zipCode = $('input[name="zipCode"]').val().trim();
+
+        // Validate that top 3 fields are filled
+        if (!flatNumber || !streetName || !city) {
+            alert('Please fill out the Flat Number, Street Name, and City fields.');
+            return;
+        }
 
         var fullAddress = flatNumber + ', ' + streetName + ', ' + city + ', ' + country + ', ' + zipCode;
 
@@ -285,8 +292,8 @@ $(document).ready(function () {
         $('.add_address_form').trigger('reset');
     });
 
+    // Validation for setting addresses
     $('.set-address-btn').on('click', function () {
-        
         var selectedBillingAddresses = [];
         $('input.billingCheckbox:checked').each(function () {
             selectedBillingAddresses.push($(this).data('address'));
@@ -296,6 +303,17 @@ $(document).ready(function () {
         $('input.shippingCheckbox:checked').each(function () {
             selectedShippingAddresses.push($(this).data('address'));
         });
+
+        // Validate that at least one billing and one shipping address is selected
+        if (selectedBillingAddresses.length === 0) {
+            alert('Please select at least one billing address.');
+            return;
+        }
+
+        if (selectedShippingAddresses.length === 0) {
+            alert('Please select at least one shipping address.');
+            return;
+        }
 
         if (selectedBillingAddresses.length > 0) {
             $('.billing-address .address-content').text(selectedBillingAddresses.join('; '));
