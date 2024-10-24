@@ -16,7 +16,7 @@
     }
 
     .card_details div:nth-child(2) {
-        width: 16%;
+        width: 23%;
     }
 
     .card_details button {
@@ -63,7 +63,7 @@
     }
 
     .card_details div:first-child {
-        width: 38%;
+        width: 50%;
     }
 
     .card_details div:nth-child(2) {
@@ -71,7 +71,10 @@
     }
 
     .card_details button {
-        width: 33%;
+        width: 30%;
+    }
+    .card_details {
+        flex-wrap: wrap;
     }
 
     .other_charges>ul>li {
@@ -199,5 +202,8 @@
     form.add_address_form .site_btn {
         margin-left: 0px;
         margin-top : 10px;
+    }
+    .card_details div {
+        width: 84%;
     }
 }
