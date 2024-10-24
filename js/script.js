@@ -312,11 +312,3 @@ $(document).ready(function () {
         $('#exampleModalToggle').modal('hide');
     });
 });
-
-
-
-
-
-
-
-
