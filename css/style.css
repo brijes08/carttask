@@ -155,6 +155,31 @@ a.accordian-toggle {
 }
 
 
+.accordian-toggle {
+    position: relative;
+}
+
+.accordian-toggle::before {
+    position        : absolute;
+    content         : "";
+    width           : 12px;
+    height          : 12px;
+    border-radius   : 100%;
+    background-color: #c3c3c3;
+    left            : -26px;
+    top             : 6px;
+}
+
+.accordian-toggle.active::after {
+    position        : absolute;
+    content         : "";
+    width           : 6px;
+    height          : 6px;
+    border-radius   : 100%;
+    background-color: #454242;
+    left            : -23px;
+    top             : 9px;
+}
 
 .billing_details ul li a input.accordion-radio {
     margin-right: 10px;
@@ -358,52 +383,6 @@ form.add_address_form .site_btn:hover {
     color           : #222222;
 }
 
-form.add_address_form .site_btn {
-    margin-left: 8px;
-}
-
-form.add_address_form {
-    margin-top : 45px;
-    border-top : 1px solid #222;
-    padding-top: 45px;
-}
-
-form.add_address_form .form_innerdiv>div {
-    width : 31%;
-    margin: 0 8px 16px;
-}
-
-.form_innerdiv {
-    display  : flex;
-    flex-wrap: wrap;
-}
-
-.accordian-toggle {
-    position: relative;
-}
-
-.accordian-toggle::before {
-    position        : absolute;
-    content         : "";
-    width           : 12px;
-    height          : 12px;
-    border-radius   : 100%;
-    background-color: #c3c3c3;
-    left            : -26px;
-    top             : 6px;
-}
-
-.accordian-toggle.active::after {
-    position        : absolute;
-    content         : "";
-    width           : 6px;
-    height          : 6px;
-    border-radius   : 100%;
-    background-color: #454242;
-    left            : -23px;
-    top             : 9px;
-}
-
 .adress_setting input {
     position  : relative;
     visibility: hidden;
@@ -432,4 +411,24 @@ form.add_address_form .form_innerdiv>div {
     left            : 0px;
     top             : 0px;
     visibility      : visible;
+}
+
+form.add_address_form .site_btn {
+    margin-left: 8px;
+}
+
+form.add_address_form {
+    margin-top : 45px;
+    border-top : 1px solid #222;
+    padding-top: 45px;
+}
+
+form.add_address_form .form_innerdiv>div {
+    width : 31%;
+    margin: 0 8px 16px;
+}
+
+.form_innerdiv {
+    display  : flex;
+    flex-wrap: wrap;
 }
