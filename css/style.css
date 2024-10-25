@@ -330,7 +330,7 @@ div.error-message {
     border          : 1px solid #ccc;
     padding         : 10px;
     border-radius   : 5px;
-    background-color: #eeeeee;
+    background-color: #faf8f8;
     margin-bottom   : 25px;
 }
 
@@ -383,15 +383,14 @@ form.add_address_form .form_innerdiv>div {
 }
 
 .accordian-toggle::before {
-    position           : absolute;
-    content            : "";
-    width              : 12px;
-    height             : 12px;
-    /* border          : 1px solid #0d6efd; */
-    border-radius      : 100%;
-    background-color   : #c3c3c3;
-    left               : -26px;
-    top                : 6px;
+    position        : absolute;
+    content         : "";
+    width           : 12px;
+    height          : 12px;
+    border-radius   : 100%;
+    background-color: #c3c3c3;
+    left            : -26px;
+    top             : 6px;
 }
 
 .accordian-toggle.active::after {
@@ -403,4 +402,34 @@ form.add_address_form .form_innerdiv>div {
     background-color: #454242;
     left            : -23px;
     top             : 9px;
+}
+
+.adress_setting input {
+    position  : relative;
+    visibility: hidden;
+}
+
+.adress_setting input::before {
+    position        : absolute;
+    content         : "";
+    width           : 12px;
+    height          : 12px;
+    border          : 1px solid #d9dce1;
+    border-radius   : 100%;
+    background-color: #d9dce1;
+    left            : 0px;
+    top             : 0px;
+    visibility      : visible;
+}
+
+.adress_setting input:checked::after {
+    position        : absolute;
+    content         : "";
+    width           : 12px;
+    height          : 12px;
+    border-radius   : 100%;
+    background-color: #0d6efd;
+    left            : 0px;
+    top             : 0px;
+    visibility      : visible;
 }
