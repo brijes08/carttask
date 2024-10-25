@@ -145,7 +145,6 @@ a.accordian-toggle {
     visibility: hidden;
     opacity   : 0;
     height    : 0;
-    transition: visibility 0s, opacity 0.3s, height 0.3s;
 }
 
 .form.visible {
@@ -207,7 +206,7 @@ a.accordian-toggle:hover {
 
 input.form-control:focus {
     box-shadow: none;
-    border: 1px solid #222;
+    border    : 1px solid #222;
 }
 
 .card_details div:nth-child(2) {

@@ -64,7 +64,7 @@ function validateForm() {
     if (month === "MM" || year === "YYYY") {
         document.getElementById("month").classList.add("error");
         document.getElementById("year").classList.add("error");
-        document.getElementById("dateError").innerText = "Please select a valid month and year.";
+        document.getElementById("dateError").innerText = "Select a valid month and year.";
         isValid = false;
     }
 
