@@ -153,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function updateOrder() {
     const orderItems = document.querySelectorAll("#orderItems .products");
     let subtotal = 0;
-    let totalSavings = 0;
     const deliveryCharge = 10;
 
     orderItems.forEach(item => {
@@ -163,22 +162,20 @@ function updateOrder() {
 
         const originalPrice = parseFloat(priceElement.getAttribute("data-price"));
         const quantity = parseInt(quantityElement.value);
-        const itemTotal = originalPrice * quantity;
         const savings = quantity * 1;
+        const adjustedPrice = originalPrice - 1;
+        const itemTotal = adjustedPrice * quantity;
 
         priceElement.textContent = `$${itemTotal.toFixed(2)}`;
 
-        savedElement.textContent = `You have saved $${savings.toFixed(2)}`;
+        savedElement.textContent = `You have saved ${formatCurrency(savings)}`;
 
         subtotal += itemTotal;
-
-        totalSavings += savings;
     });
 
-    const finalSubtotal = subtotal - totalSavings;
-    const totalPayment = finalSubtotal + deliveryCharge;
+    const totalPayment = subtotal + deliveryCharge;
 
-    document.getElementById("totalPayment").textContent = `$${totalPayment.toFixed(2)}`;
+    document.getElementById("totalPayment").textContent = formatCurrency(totalPayment);
 
     updatePaymentButton();
 }
@@ -187,7 +184,7 @@ function updatePaymentButton() {
     const totalPayment = parseFloat(document.getElementById("totalPayment").textContent.replace('$', ''));
 
     document.querySelectorAll(".payment_btn").forEach(paymentButton => {
-        paymentButton.textContent = `Pay $${totalPayment.toFixed(2)}`;
+        paymentButton.textContent = `Pay ${formatCurrency(totalPayment)}`;
     });
 }
 
@@ -211,10 +208,9 @@ function removeItem(element) {
     updateOrder();
 }
 
-
-
-
-
+function formatCurrency(value) {
+    return value % 1 === 0 ? `$${value.toFixed(0)}` : `$${value.toFixed(2)}`;
+}
 
 
 
