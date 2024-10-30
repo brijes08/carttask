@@ -33,12 +33,6 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
-
 function validateForm() {
     const cardNumber = document.getElementById("cardNumber").value.trim();
     const month = document.getElementById("month").value;
@@ -195,99 +189,56 @@ function formatCurrency(value) {
 
 
 $(document).ready(function () {
-    // Default addresses array
     let addresses = [
         '123 Main St, Springfield, IL, USA, 62701',
         '456 Elm St, Springfield, IL, USA, 62702'
     ];
 
-    // Function to render addresses
-    function renderAddresses() {
-        // Clear current address listings
+    const renderAddresses = () => {
         $('.modal-body .row').empty();
-        addresses.forEach(function (address) {
-            addAddressToList(address);
-        });
-    }
+        addresses.forEach(address => addAddressToList(address));
+    };
 
-    // Function to add a new address to the modal
-    function addAddressToList(address) {
-        var newAddressHtml = `
+    const addAddressToList = (address) => {
+        $('.modal-body .row').append(`
             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="adress_setting">
                     <p>${address}</p>
                     <form>
-                        <label><input type="checkbox" name="billingAddress" class="billingCheckbox" data-address="${address}"> Set Billing Address</label>
-                        <label><input type="checkbox" name="shippingAddress" class="shippingCheckbox" data-address="${address}"> Set Shipping Address</label>
+                        <label><input type="checkbox" class="billingCheckbox" data-address="${address}">Set Billing Address</label>
+                        <label><input type="checkbox" class="shippingCheckbox" data-address="${address}">Set Shipping Address</label>
                     </form>
                 </div>
             </div>
-        `;
-        $('.modal-body .row').append(newAddressHtml);
-    }
+        `);
+    };
 
-    renderAddresses();
-
-    // Validation and submission for adding a new address
     $('.add_address_form').on('submit', function (e) {
         e.preventDefault();
+        const flatNumber = $('input[name="flatNumber"]').val().trim();
+        const streetName = $('input[name="streetName"]').val().trim();
+        const city = $('input[name="city"]').val().trim();
 
-        var flatNumber = $('input[name="flatNumber"]').val().trim();
-        var streetName = $('input[name="streetName"]').val().trim();
-        var city = $('input[name="city"]').val().trim();
-        var country = $('input[name="country"]').val().trim();
-        var zipCode = $('input[name="zipCode"]').val().trim();
-
-        // Validate that top 3 fields are filled
-        if (!flatNumber || !streetName || !city) {
-            alert('Please fill out the Flat Number, Street Name, and City fields.');
-            return;
-        }
-
-        var fullAddress = flatNumber + ', ' + streetName + ', ' + city + ', ' + country + ', ' + zipCode;
-
-        addresses.push(fullAddress);
-
+        if (!flatNumber || !streetName || !city) return alert('Fill out Flat Number, Street Name, and City.');
+        
+        addresses.push(`${flatNumber}, ${streetName}, ${city}, ${$('input[name="country"]').val().trim()}, ${$('input[name="zipCode"]').val().trim()}`);
         renderAddresses();
-
-        $('.add_address_form').trigger('reset');
+        $(this).trigger('reset');
     });
 
-    // Validation for setting addresses
     $('.set-address-btn').on('click', function () {
-        var selectedBillingAddresses = [];
-        $('input.billingCheckbox:checked').each(function () {
-            selectedBillingAddresses.push($(this).data('address'));
-        });
+        const selectedBilling = $('input.billingCheckbox:checked').map((_, el) => $(el).data('address')).get();
+        const selectedShipping = $('input.shippingCheckbox:checked').map((_, el) => $(el).data('address')).get();
 
-        var selectedShippingAddresses = [];
-        $('input.shippingCheckbox:checked').each(function () {
-            selectedShippingAddresses.push($(this).data('address'));
-        });
+        if (!selectedBilling.length) return alert('Select at least one billing address.');
+        if (!selectedShipping.length) return alert('Select at least one shipping address.');
 
-        // Validate that at least one billing and one shipping address is selected
-        if (selectedBillingAddresses.length === 0) {
-            alert('Please select at least one billing address.');
-            return;
-        }
-
-        if (selectedShippingAddresses.length === 0) {
-            alert('Please select at least one shipping address.');
-            return;
-        }
-
-        if (selectedBillingAddresses.length > 0) {
-            $('.billing-address .address-content').text(selectedBillingAddresses.join('; '));
-        } else {
-            $('.billing-address .address-content').text("No billing address set.");
-        }
-
-        if (selectedShippingAddresses.length > 0) {
-            $('.shipping-address .address-content').text(selectedShippingAddresses.join('; '));
-        } else {
-            $('.shipping-address .address-content').text("No shipping address set.");
-        }
+        $('.billing-address .address-content').text(selectedBilling.join('; ') || "No billing address set.");
+        $('.shipping-address .address-content').text(selectedShipping.join('; ') || "No shipping address set.");
 
         $('#exampleModalToggle').modal('hide');
     });
+
+    renderAddresses();
 });
+
