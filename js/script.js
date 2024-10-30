@@ -132,16 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
             removeItem(this);
         });
     });
-
-    document.querySelectorAll(".accordian-toggle").forEach(accordion => {
-        accordion.addEventListener("click", function (event) {
-            event.preventDefault();
-            
-            updatePaymentButton();
-
-            toggleAccordionContent(accordion);
-        });
-    });
 });
 
 function updateOrder() {
