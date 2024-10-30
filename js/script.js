@@ -182,20 +182,6 @@ function updatePaymentButton() {
     });
 }
 
-function toggleAccordionContent(accordion) {
-    const content = accordion.nextElementSibling;
-
-    if (content.style.display === "block") {
-        content.style.display = "none";
-    } else {
-        document.querySelectorAll(".form").forEach(form => {
-            form.style.display = "none";
-        });
-
-        content.style.display = "block";
-    }
-}
-
 function removeItem(element) {
     const productItem = element.closest(".products");
     productItem.remove();
