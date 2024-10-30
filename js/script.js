@@ -146,11 +146,12 @@ function updateOrder() {
 
         const originalPrice = parseFloat(priceElement.getAttribute("data-price"));
         const quantity = parseInt(quantityElement.value);
+        const savings = quantity * 1;
         const adjustedPrice = originalPrice - 1;
         const itemTotal = adjustedPrice * quantity;
 
         priceElement.textContent = `$${itemTotal.toFixed(2)}`;
-        savedElement.textContent = `You have saved ${formatCurrency(quantity)}`;
+        savedElement.textContent = `You have saved ${formatCurrency(savings)}`;
 
         subtotal += itemTotal;
     });
@@ -160,7 +161,6 @@ function updateOrder() {
 
     updatePaymentButton();
 }
-
 
 function updatePaymentButton() {
     const totalPayment = parseFloat(document.getElementById("totalPayment").textContent.replace('$', ''));
