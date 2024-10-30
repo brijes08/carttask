@@ -43,7 +43,7 @@ function validateForm() {
     const cardNumber = document.getElementById("cardNumber").value.trim();
     const month = document.getElementById("month").value;
     const year = document.getElementById("year").value;
-    const cvv = document.getElementById("cvv").value.trim();
+    const cvv = document.getElementById("cvv").value;
 
     let isValid = true;
 
@@ -74,38 +74,30 @@ function validateForm() {
         isValid = false;
     }
 
-    if (isValid) {
-        alert("Payment submitted successfully!");
-    }
+    if (isValid) alert("Payment submitted successfully!"); 
 }
 
 function validateCustomerID() {
-    var customerId = document.getElementById("Netbanking").value;
-    var errorMessage = document.getElementById("NetbankingError");
+    const customerId = document.getElementById("Netbanking").value;
+    const errorMessage = document.getElementById("NetbankingError");
 
-    var customerIdPattern = /^\d{8}$/;
-
-    if (customerIdPattern.test(customerId)) {
+    if (/^\d{8}$/.test(customerId)) {
         errorMessage.textContent = "";
         alert("Form submitted successfully!");
     } else {
         errorMessage.textContent = "Please enter a valid 8-digit Customer ID.";
-        errorMessage.style.color = "red";
     }
 }
 
 function validateFormUPI() {
-    var upiId = document.getElementById("UPIID").value;
-    var errorMessage = document.getElementById("UPIIDError");
-    
-    var upiPattern = /^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z]{2,}$/;
-    
-    if (upiPattern.test(upiId)) {
+    const upiId = document.getElementById("UPIID").value;
+    const errorMessage = document.getElementById("UPIIDError");
+
+    if (/^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z]{2,}$/.test(upiId)) {
         errorMessage.textContent = "";
         alert("Form submitted successfully!");
     } else {
         errorMessage.textContent = "Please enter a valid UPI ID (e.g., example@bank).";
-        errorMessage.style.color = "red";
     }
 }
 
