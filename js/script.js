@@ -74,7 +74,9 @@ function validateForm() {
         isValid = false;
     }
 
-    if (isValid) alert("Payment submitted successfully!"); 
+    if (isValid) {
+        alert("Payment submitted successfully!");
+    }
 }
 
 function validateCustomerID() {
